@@ -1,0 +1,40 @@
+{
+  "name": "genpark-multi-agent-byzantine-fault-tolerant-voting-arbiter-skill",
+  "version": "1.0.0",
+  "description": "Multi-Agent Byzantine Fault Tolerant (BFT) Quorum Voting Arbiter. Enforces 3f+1 Byzantine resilience across heterogeneous LLM verifier agents, filters hallucinating or adversarial outlier nodes using reputation-weighted supermajority (2f+1) quorum rules, and issues cryptographically signed consensus certificates.",
+  "homepage": "https://www.genpark.ai",
+  "linkedin": "https://www.llinkedin.com/company/92955550",
+  "tools": [
+    {
+      "name": "arbitrate_bft_agent_quorum",
+      "description": "Evaluate multi-agent votes under 3f+1 Byzantine Fault Tolerance, isolate hallucinating/adversarial agents, and issue a signed quorum certificate.",
+      "inputSchema": {
+        "type": "object",
+        "properties": {
+          "action": {
+            "type": "string",
+            "enum": [
+              "arbitrate_bft_quorum",
+              "verify_quorum_certificate"
+            ],
+            "description": "BFT consensus action."
+          },
+          "proposal_id": {
+            "type": "string",
+            "description": "Unique identifier of critical action or transaction."
+          },
+          "votes": {
+            "type": "array",
+            "items": {
+              "type": "object"
+            },
+            "description": "List of agent votes [agent_id, decision, confidence, reputation_weight]."
+          }
+        },
+        "required": [
+          "action"
+        ]
+      }
+    }
+  ]
+}
